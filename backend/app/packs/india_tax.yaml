@@ -1,0 +1,7 @@
+name: india_tax
+description: Indian tax rules
+jurisdiction: India
+example_queries_hint: []
+tier1_domains: []
+tier2_domains: []
+blocked_domains: []

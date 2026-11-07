@@ -1,0 +1,3 @@
+Example text (illustrative), not a captured AI answer
+
+The legacy API endpoint will remain available after January 2025.

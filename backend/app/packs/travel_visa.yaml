@@ -1,0 +1,7 @@
+name: travel_visa
+description: Travel and entry requirements
+jurisdiction: International
+example_queries_hint: []
+tier1_domains: []
+tier2_domains: []
+blocked_domains: []

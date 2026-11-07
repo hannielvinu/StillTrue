@@ -1,0 +1,28 @@
+services:
+  bifrost:
+    image: maximhq/bifrost@sha256:b5258c5f11c79064fc8280e49513f54c0b1da81c78bd11d3b4c1f62f8926d1ab
+    ports: ["127.0.0.1:8080:8080"]
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    volumes:
+      - bifrost_data:/app/data
+      - ./bifrost/config.json:/app/data/config.json:ro
+      - ./bifrost/pricing.json:/app/data/pricing.json:ro
+      - ./bifrost/model-parameters.json:/app/data/model-parameters.json:ro
+  app:
+    build: .
+    ports: ["127.0.0.1:8000:8000"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      BIFROST_BASE_URL: http://bifrost:8080
+      NO_PROXY: ${NO_PROXY:-localhost,127.0.0.1},bifrost
+      no_proxy: ${no_proxy:-localhost,127.0.0.1},bifrost
+      MOCK_MODE: ${MOCK_MODE:-false}
+    volumes: ["app_data:/app/.data"]
+    depends_on: [bifrost]
+volumes:
+  bifrost_data:
+  app_data:

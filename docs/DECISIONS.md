@@ -15,3 +15,5 @@
 13. Production use needs authentication, a shared job store for multiple workers, and review of data retention. Current deployment binds Docker ports to loopback.
 
 14. Bifrost startup initially failed fetching its remote catalog under restricted container DNS. Used its documented file:// datasheet configuration with the upstream local-pricing example files, vendored from commit 6e640279b36337820f2088fb85f6e78f339063c3. These are limited example catalog snapshots, not current pricing claims; no dollar costs are displayed. MCP catalog sync is off. See upstream deployment-guides/how-to/airgapped.mdx.
+
+15. Dependency audits prompted FastAPI/Starlette, pytest and frontend tooling upgrades. React Router 7 retains the declarative routing API with React 18 while resolving advisories in the older 6.x pin. Production Python requirements are exported with hashes from uv.lock and installed with --require-hashes.

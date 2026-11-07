@@ -8,7 +8,7 @@
 - [x] M7 Supporting pages and honest empty states
 - [x] M8 Capture/record/benchmark tooling and user-verified seed
 - [x] M9 README and submission documentation
-- [ ] M10 Final checks and screenshots (see VERIFICATION.md)
+- [x] M10 Local tests, lint, build, dependency hardening, Docker checks and screenshots (see VERIFICATION.md)
 - [ ] Real API runs, real recording and benchmark (requires credentials)
 - [ ] 40 opened-source candidate rows (official pages blocked by environment policy)
 

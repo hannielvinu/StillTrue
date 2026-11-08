@@ -151,4 +151,4 @@ An AI coding assistant helped implement and test this project. Human review is s
 
 ## Pitch presentation
 
-[Download the editable PowerPoint](docs/presentation/StillTrue_Pitch.pptx) · [Read the PDF](docs/presentation/StillTrue_Pitch.pdf). Eight slides with speaker notes; mock output and live-validation prerequisites are labelled.
+[Download the submission PowerPoint](docs/presentation/StillTrue_Pitch.pptx) · [Editable version](docs/presentation/StillTrue_Editable.pptx) · [Read the PDF](docs/presentation/StillTrue_Pitch.pdf). Eight slides with speaker notes; mock output and live-validation prerequisites are labelled.

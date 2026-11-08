@@ -1,5 +1,11 @@
-# StillTrue pitch deck
+# StillTrue pitch deck — redesigned
 
-Upload **StillTrue_Pitch.pptx** to the hackathon PPT field. Eight editable 16:9 slides include three-minute speaker notes. StillTrue_Pitch.pdf is a portable reading copy with equivalent fonts. Mock screenshots and outstanding live checks are explicitly labelled.
+- **StillTrue_Pitch.pptx**: portable submission copy. Rendered slides preserve the exact typography and colors across devices without installing fonts. Speaker notes included.
+- **StillTrue_Editable.pptx**: editable native text/vector source. Install bundled fonts before editing to prevent substitutions.
+- **StillTrue_Pitch.pdf**: vector PDF reading copy with embedded fonts.
+- **Preview.png**: overview of all eight slides.
+- **StillTrue_Fonts.zip** / fonts/: custom-named static instances of Fraunces, Inter and JetBrains Mono, with their licenses.
 
-To regenerate: install python-pptx, reportlab and Pillow in a local Python environment, then run `python docs/presentation/build_pitch.py`. The PDF renderer uses the DejaVu fonts at standard Linux paths; adjust paths on other systems. The PowerPoint uses Georgia and Aptos and may substitute fonts on systems without them. Review in PowerPoint before presenting. Before a final live submission, replace the offline screenshot and pending-status statements only after real validation has completed.
+Design: midnight navy, warm ivory, electric lime, teal and coral; large editorial headings, concise UI-style labels, real screenshot and visual architecture. Offline fixtures and pending live checks remain labelled.
+
+Regenerate with Python packages python-pptx, reportlab, Pillow and fonttools, plus pdftoppm. Install Brotli only if converting the npm WOFF2 font sources afresh. Run `python docs/presentation/build_pitch.py` from the repository. Already generated static TTFs are reused. Eight-slide speaker notes target three minutes. Before final live submission, update the screenshot and pending-status statements only after running the actual integrations.

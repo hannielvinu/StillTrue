@@ -1,0 +1,70 @@
+{
+  "slides": 10,
+  "main": 8,
+  "backup": 2,
+  "all_native_editable": true,
+  "minimum_body_font": 20,
+  "minimum_source_font": 10,
+  "minimum_contrast": 4.65,
+  "body_word_counts": {
+    "S1": 20,
+    "S2": 14,
+    "S3": 0,
+    "S4": 11,
+    "S5": 6,
+    "S6": 0,
+    "S7": 0,
+    "S8": 11,
+    "B1": 9,
+    "B2": 6
+  },
+  "placeholders": [
+    {
+      "slide": "S1",
+      "description": "team name and presenter names",
+      "asset": "team.txt"
+    },
+    {
+      "slide": "S4",
+      "description": "official Income Tax page screenshot, ₹1 crore",
+      "asset": "assets/official-schedule-al.png"
+    },
+    {
+      "slide": "S4",
+      "description": "secondary guide screenshot, ₹50 lakh",
+      "asset": "assets/secondary-tax-guide.png"
+    },
+    {
+      "slide": "S4",
+      "description": "capture dates for both source screenshots",
+      "asset": "capture-dates.txt"
+    },
+    {
+      "slide": "S5",
+      "description": "Changed card values, quote and source from a verified run",
+      "asset": "assets/verified-result.json"
+    },
+    {
+      "slide": "S6",
+      "description": "captured answer text, model name and capture date",
+      "asset": "assets/captured-answer.json"
+    },
+    {
+      "slide": "S6",
+      "description": "screen recording of a real run, or verified live demo URL",
+      "asset": "assets/recorded-run.mp4 OR live-url.txt"
+    },
+    {
+      "slide": "S6",
+      "description": "Recorded run · date · models",
+      "asset": "assets/recording-metadata.json"
+    },
+    {
+      "slide": "S7",
+      "description": "benchmark chart; run make bench with real keys",
+      "asset": "../benchmark/results/*.json"
+    }
+  ],
+  "errors": [],
+  "benchmark_file": null
+}

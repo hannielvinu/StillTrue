@@ -1,0 +1,9 @@
+bifrost:
+  openai_compatible_endpoint: planned
+  cross_provider_routing: planned
+  fallbacks: planned
+  virtual_key_budget_controls: planned
+  observability: planned
+tavily:
+  official_domain_search: planned
+  page_extract: planned

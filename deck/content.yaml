@@ -1,0 +1,190 @@
+title: StillTrue
+event: Global AI Hackathon 2026 · Bifrost × Tavily
+source_note: External facts are supplied by the author in the build brief; they have
+  not been independently re-opened in this environment. No assessment year is inferred.
+sources:
+  reported_tax:
+    name: Business Today, July 2026 (reported case)
+    url: https://www.businesstoday.in/personal-finance/tax/story/filing-itr-with-ai-heres-what-chatgpt-and-claude-can-and-cant-do-for-taxpayers-540997-2026-07-04
+  official:
+    name: Income Tax Department
+    url: https://www.incometaxindia.gov.in/w/8schedule_al
+  guide:
+    name: TaxBuddy guide; capture date missing
+    url: https://www.taxbuddy.com/blog/defining-itr-2-and-its-attributes
+  uk:
+    name: TechRadar reporting Lloyds / Dext research
+    url: https://www.techradar.com/pro/why-relying-on-unverified-chatbot-financial-advice-leads-to-costly-errors
+  liability:
+    name: FAnews on Moffatt v Air Canada
+    url: https://www.fanews.co.za/article/legal-affairs/10/general/1120/company-is-liable-for-chatbot-miscommunications-holds-canadian-tribunal/38906
+  verity:
+    name: Verity listing (not tested by us)
+    url: https://claudemarket.ai/mcp/Clawdio777/verity
+  jev:
+    name: jev listing (not tested by us)
+    url: https://glama.ai/mcp/servers/jevbook/jevbook-mcp/tree
+  oracle:
+    name: 402oracle listing (not tested by us)
+    url: https://www.mcpbundles.com/skills/402oracle-mcp-d8087a22d5
+  repo:
+    name: Project design / implementation; live checks pending
+    url: https://github.com/hannielvinu/StillTrue
+slides:
+- id: S1
+  title: StillTrue
+  body: Check whether what your AI just told you is still true today.
+  seconds: 10
+  sources:
+  - repo
+  script: We built StillTrue to check whether an actionable AI answer is still current.
+    We show the evidence and keep uncertainty visible.
+  criterion: Innovation; problem and impact
+  transition: Here is the human decision that motivated us.
+- id: S2
+  title: An AI told a taxpayer to fill a form. The rule had changed.
+  body: He caught it only because he already knew.
+  seconds: 25
+  sources:
+  - reported_tax
+  - official
+  script: A reported case described an engineer using an AI assistant for an ITR-2
+    filing. It gave an outdated Schedule AL instruction. The supplied reporting and
+    official page describe a move from fifty lakh to one crore. We do not claim an
+    assessment year, and we do not present this as our own captured model response.
+  criterion: Problem and impact
+  transition: That case sits within a wider pattern of people acting on answers.
+- id: S3
+  title: People act on AI answers about money. Companies own their bots’ words.
+  body: Reported research and a separate liability case illustrate the stakes.
+  seconds: 25
+  sources:
+  - uk
+  - liability
+  script: 'Our supplied sources report roughly twenty-eight million UK users of AI
+    for money guidance. A survey of five hundred accountants found half knew businesses
+    harmed by wrong AI advice. Air Canada owed eight hundred twelve Canadian dollars
+    and two cents after its chatbot invented a fare policy. That was fabrication,
+    not stale information: a different failure, the same responsibility lesson.'
+  criterion: Problem and potential impact
+  transition: But simply adding search does not solve source disagreement.
+- id: S4
+  title: The live web is stale too.
+  body: Which source should an answer rely on? StillTrue prioritizes official evidence.
+  seconds: 30
+  sources:
+  - official
+  - guide
+  script: Search alone does not resolve conflicting pages. The supplied brief describes
+    an official one-crore threshold and a secondary guide showing fifty lakh. We need
+    dated captures before displaying them as observed evidence. We deliberately leave
+    those screenshots as placeholders and do not infer what a particular chatbot would
+    choose.
+  criterion: Innovation; use of AI
+  transition: Here is how our engine handles that uncertainty.
+- id: S5
+  title: Five steps, official sources first.
+  body: No official source = Couldn’t confirm.
+  seconds: 30
+  sources:
+  - repo
+  script: We extract time-sensitive claims, search allow-listed official domains through
+    Tavily, read the evidence, and route model judgments through Bifrost. Approved
+    official evidence and a matching quote are required for definitive verdicts. The
+    implementation can make a broader discovery search when official results are missing,
+    but secondary material alone cannot produce a definitive verdict.
+  criterion: Technical execution; use of AI
+  transition: Let us move from the pipeline to the demonstration.
+- id: S6
+  title: Watch it catch the change.
+  body: A real captured answer and real run belong here—not staged evidence.
+  seconds: 90
+  sources:
+  - repo
+  script: For this segment, we will paste an actually captured model answer and show
+    its capture model and date. Then we will show a completed real check, its copied
+    evidence and official page. At present the capture, recording and live deployment
+    have not been supplied or validated, so this slide displays unmistakable placeholders.
+    If the live demo fails, switch to a genuine recorded run and say plainly that
+    it is recorded. If no real recording exists, show the labelled offline UI demonstration
+    and say that it does not verify claims.
+  criterion: Working prototype; user experience
+  transition: Now we will distinguish the architecture from measured proof.
+- id: S7
+  title: Built on both sponsors, and measured.
+  body: Only real runs can fill the benchmark chart.
+  seconds: 40
+  sources:
+  - repo
+  script: The architecture separates model routing, retrieval, evidence caching and
+    deterministic verdict checks. Sponsor feature status starts planned until the
+    author marks it verified. The benchmark panel remains empty because no real results
+    file exists. When measured, it compares accuracy and false-Still-true rate against
+    a no-retrieval baseline, including sample size and latency. A small sample will
+    be explicitly labelled.
+  criterion: Technical execution; scalability
+  transition: Here is the path forward and what remains outside our scope.
+- id: S8
+  title: From one checked claim to a trusted layer for AI answers.
+  body: He caught it because he knew. Everyone else shouldn’t have to.
+  seconds: 30
+  sources:
+  - repo
+  script: Our path is free access for people and the same engine as an API for developers.
+    More source packs, a browser extension and team audit logs are next steps, not
+    shipped traction. We cover claims with official online sources; sources can lag
+    and models can err. This is not professional advice. We want evidence to be inspectable
+    before someone acts.
+  criterion: Potential impact; scalability
+  transition: We are happy to take questions; the next two slides are backup.
+- id: B1
+  title: 'Backup: landscape and Q&A'
+  body: Neutral descriptions from supplied listings; not tested by us.
+  seconds: 0
+  sources:
+  - verity
+  - jev
+  - oracle
+  - repo
+  script: These are descriptions from the supplied listings, not a comparative product
+    test. Verity offers freshness verdicts through a Chrome extension and MCP. jev
+    exposes claim verification. 402oracle offers paid claim and URL freshness checks.
+    StillTrue focuses on official evidence, dated claim-level explanations and a consumer
+    plus developer flow. We have not demonstrated superiority over these products.
+  criterion: Innovation; questions
+  transition: Here is the privacy boundary in more detail.
+- id: B2
+  title: 'Backup: privacy and limits'
+  body: Data minimization helps; it does not make sensitive input risk-free.
+  seconds: 0
+  sources:
+  - repo
+  script: The full application sends masked claims and evidence to the configured
+    model provider through Bifrost, and derived search queries and official URLs to
+    Tavily. Regex masking can miss personal information. Pasted text is not persisted
+    to disk; temporary jobs exist in memory. SQLite retains retrieved evidence and
+    budget counters. The static offline demo calls neither service. Provider retention
+    policies still apply.
+  criterion: Security; technical execution
+  transition: Thank you; the repository contains implementation details and limits.
+facts:
+  threshold_label: Schedule AL income threshold (as reported)
+  old_threshold: ₹50 lakh
+  current_threshold: ₹1 crore
+  impact_cards:
+  - figure: ≈28 million
+    body: UK users of AI money guidance (Lloyds).
+  - figure: Half of 500
+    body: Accountants knew businesses harmed by wrong AI advice (Dext).
+  - figure: CAD 812.02
+    body: Chatbot policy fabrication. Different failure; same liability lesson.
+  number_provenance:
+    '50': Supplied reported threshold / secondary guide
+    '1': Supplied official threshold; also structural numbering
+    '28': Supplied Lloyds reach figure
+    '500': Supplied Dext sample size
+    '812': Supplied Air Canada amount, CAD 812.02
+    '02': Supplied Air Canada amount decimals; also slide numbering
+    '30': Supplied next-30-day planned roadmap
+    '2026': Supplied event year
+    '402': Supplied 402oracle product name

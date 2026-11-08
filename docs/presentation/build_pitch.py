@@ -14,7 +14,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.utils import ImageReader
 
 ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'docs/presentation';FD=OUT/'fonts';FD.mkdir(exist_ok=True)
-for source,weight,name in [('fraunces',650,'StillTrue Display'),('inter',400,'StillTrue Sans'),('inter',650,'StillTrue Sans Bold'),('jetbrains-mono',450,'StillTrue Mono')]:
+for source,weight,name in [('space-grotesk',600,'StillTrue Grotesk'),('inter',400,'StillTrue Sans'),('inter',650,'StillTrue Sans Bold'),('jetbrains-mono',450,'StillTrue Mono')]:
     dest=FD/(name.replace(' ','-')+'.ttf')
     if not dest.exists():
         folder=ROOT/'frontend/node_modules/@fontsource-variable'/source
@@ -28,7 +28,7 @@ for source,weight,name in [('fraunces',650,'StillTrue Display'),('inter',400,'St
         licensefile=folder/'LICENSE'
         if licensefile.exists():(FD/f'{source}-LICENSE.txt').write_text(licensefile.read_text())
     pdfmetrics.registerFont(TTFont(name,str(dest)))
-DISPLAY='StillTrue Display';SANS='StillTrue Sans';BOLD='StillTrue Sans Bold';MONO='StillTrue Mono'
+DISPLAY='StillTrue Grotesk';SANS='StillTrue Sans';BOLD='StillTrue Sans Bold';MONO='StillTrue Mono'
 NAVY='101F2C';CREAM='F5F3EB';LIME='C5F66B';TEAL='116D60';CORAL='F98A70';WHITE='FFFFFF';GREY='566571';MIST='DCE6DF';MUTED='A4B6BF';PANEL='1B303E'
 R=Presentation();R.slide_width=Inches(13.333333);R.slide_height=Inches(7.5)
 C=canvas.Canvas(str(OUT/'StillTrue_Pitch.pdf'),pagesize=(960,540));C.setTitle('StillTrue | Before you act, check the answer.');C.setAuthor('Hanniel Vinu')

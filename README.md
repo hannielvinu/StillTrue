@@ -148,3 +148,7 @@ This is not professional advice. PII detection is best-effort. Do not paste secr
 Python 3.11+, FastAPI, Pydantic v2, httpx, aiosqlite, PyYAML, slowapi; React 18, strict TypeScript, Vite, Tailwind 3.4, Lucide, self-hosted Fraunces/Inter/JetBrains Mono fonts. Docker Compose and GitHub Actions. MIT, copyright 2026 Hanniel Vinu.
 
 An AI coding assistant helped implement and test this project. Human review is still required before submission; this README does not claim that review has happened.
+
+## Pitch presentation
+
+[Download the editable PowerPoint](docs/presentation/StillTrue_Pitch.pptx) · [Read the PDF](docs/presentation/StillTrue_Pitch.pdf). Eight slides with speaker notes; mock output and live-validation prerequisites are labelled.

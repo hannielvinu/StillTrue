@@ -185,6 +185,12 @@ def finish(row):
         if props:
             description=shape.text if shape.has_text_frame and shape.text else f"{ID}: diagram or decorative frame supporting {row['title']}"
             props[0].set('descr',description)
+    # Keep citations and footer last in native reading order.
+    for item in list(S.shapes):
+        if item.top >= Inches(474/72):
+            tree=item._element.getparent()
+            tree.remove(item._element)
+            tree.append(item._element)
     C.showPage()
 
 row=common(0)

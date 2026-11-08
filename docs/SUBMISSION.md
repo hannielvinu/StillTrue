@@ -24,3 +24,7 @@ Bifrost, Tavily, Python, FastAPI, Pydantic, httpx, SQLite, React, TypeScript, Vi
 - [ ] Submission form and slide deck completed by entrant
 
 Form idea-description character limit: parameter supplied by the actual form, not guessed. Use `python scripts/count_chars.py FILE --limit N`. Keep reports and pitch claims consistent with docs/VERIFICATION.md.
+
+## Track and live-readiness clarification
+
+Strongest confirmed problem fit: Tavily **Stale-Answer Detector**. Using Bifrost as infrastructure does not establish fulfillment of a separate Bifrost challenge. Choose an integrated Bifrost-primary submission only after the exact Bifrost problem statement is mapped and satisfied. Source activation, credentialed calls, real demo capture and measured benchmark are pending. The free static site is an offline UI demonstration, not a live claim-verification service.

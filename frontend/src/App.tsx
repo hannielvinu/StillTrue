@@ -297,6 +297,14 @@ function annotate(text: string, results: Run["claims"]) {
         className={"annotation " + r.verdict}
         href={"#" + r.claim.id}
         key={r.claim.id}
+        onClick={
+          offlineDemo
+            ? (event) => {
+                event.preventDefault();
+                document.getElementById(r.claim.id)?.scrollIntoView();
+              }
+            : undefined
+        }
       >
         {r.claim.text} [{labels[r.verdict]}]
       </a>,
@@ -314,7 +322,8 @@ function RemotePage({ kind }: { kind: "demo" | "benchmark" }) {
   const load = () => {
     setState("Loading…");
     fetch(
-      kind === "demo" ? "/demo/recorded-run.json" : "/benchmark/latest.json",
+      import.meta.env.BASE_URL +
+        (kind === "demo" ? "demo/recorded-run.json" : "benchmark/latest.json"),
     )
       .then(async (r) => {
         if (!r.ok) throw new Error();

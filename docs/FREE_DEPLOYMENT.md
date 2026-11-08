@@ -22,3 +22,5 @@ Do not paste keys in chat or commit them. Configure secrets in hosting/cloud set
 ## Current external blockers
 
 GitHub API and sponsor/source sites are denied by the active cloud allowlist. Required domain additions have been saved to the environment draft; they must be applied through environment settings. GitHub authentication exists, but API reachability is denied, so Pages enablement/deployment cannot yet be confirmed. No Tavily, model-provider, or hosting credentials are configured. Saving a draft does not apply it.
+
+Deployment attempt: [GitHub Actions run 42502966161](https://github.com/hannielvinu/StillTrue/actions/runs/42502966161) reached Pages configuration and failed with **Pages site not found**. Enable repository Settings → Pages → Source: GitHub Actions, then rerun **Deploy free offline demo**. The configure-pages action documents that initial automatic enablement needs a token other than GITHUB_TOKEN; none was copied into the workflow. The expected site address remains unverified and no live deployment is claimed.

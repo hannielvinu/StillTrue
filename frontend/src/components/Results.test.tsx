@@ -67,3 +67,27 @@ describe("evidence report", () => {
     expect(screen.getByText("—")).toBeInTheDocument();
   });
 });
+
+it("does not present the offline demo as cross-model verification", () => {
+  render(
+    <Summary
+      run={
+        {
+          summary: {
+            still_true: 0,
+            verified: 0,
+            total: 1,
+            needs_attention: 0,
+            unconfirmed: 1,
+            freshness: null,
+          },
+          mode: "offline",
+          checked_at: "2026-11-08",
+        } as Run
+      }
+    />,
+  );
+  expect(
+    screen.getByText("Offline demo (no models or live sources checked)"),
+  ).toBeInTheDocument();
+});

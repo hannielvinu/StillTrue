@@ -42,3 +42,9 @@ Tavily request fields follow the supplied contract; official docs host was block
 The implementation was committed and pushed to origin/main as 038c42a. Documentation and browser evidence are committed separately. Both author and committer use Hanniel Vinu <hannielvinu@gmail.com>; commit-message attribution scan is clean. No credential-shaped tokens were detected by the local history scan; this is a limited pattern scan, not a credential-leak guarantee.
 
 A cloud CA build-secret override was used only for this managed environment. No TLS verification was disabled. The committed Dockerfile accepts an optional BuildKit proxy_ca secret; ordinary local Docker builds use their normal trust store. Proxy exceptions for internal bifrost traffic are configured in Compose.
+
+## Free-only continuation — 8 November 2026
+
+Static offline demonstration tested at 360 and 1280 pixels: hash routing, no horizontal overflow, no page errors, zero API requests and Unconfirmed-only output passed. New unit checks enforce that the offline demo cannot claim truth or cross-model verification. Network probes confirmed proxy policy 403 denial for api.github.com and docs.tavily.com; public GitHub repository HTML was accessible without authentication. Domain additions are saved to the draft but not applied. No public deployment or account creation is claimed. No paid resources were started.
+
+Final continuation checks: `make test lint build` passed with 17 backend tests and 11 frontend tests. The final static build also passed explicit no-model badge, keyboard skip-link/hash routing, two viewport widths and zero API-call browser checks. The native ten-slide deck passed its build checks; font glyph coverage was inspected using paragraph font inheritance and had no missing characters after correction.

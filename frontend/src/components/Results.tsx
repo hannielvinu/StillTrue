@@ -66,9 +66,18 @@ export function ClaimCard({ result: r }: { result: Result }) {
         <p>{r.query || "Synthetic offline fixture"}</p>
         <p>
           Model agreement:{" "}
-          {r.models_agree === null ? "single-model" : String(r.models_agree)} ·{" "}
-          {r.cache_hit ? "cached evidence" : "fresh retrieval"} · {r.latency_ms}{" "}
-          ms
+          {r.mock
+            ? "not run (mock data)"
+            : r.models_agree === null
+              ? "single-model"
+              : String(r.models_agree)}{" "}
+          ·{" "}
+          {r.mock
+            ? "no live retrieval"
+            : r.cache_hit
+              ? "cached evidence"
+              : "fresh retrieval"}{" "}
+          · {r.latency_ms} ms
         </p>
       </details>
     </article>
@@ -94,9 +103,11 @@ export function Summary({ run }: { run: Run }) {
       </label>
       <progress max="100" value={s.freshness ?? 0} />
       <p className="badge">
-        {run.mode === "single"
-          ? "Single-model check (add a second provider for cross-model verification)"
-          : "Cross-model check (2 models)"}
+        {run.mode === "offline"
+          ? "Offline demo (no models or live sources checked)"
+          : run.mode === "single"
+            ? "Single-model check (add a second provider for cross-model verification)"
+            : "Cross-model check (2 models)"}
       </p>
       <small>Checked {new Date(run.checked_at).toLocaleString()}</small>
     </section>

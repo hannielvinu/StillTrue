@@ -152,3 +152,11 @@ An AI coding assistant helped implement and test this project. Human review is s
 ## Pitch presentation
 
 [Download the submission PowerPoint](docs/presentation/StillTrue_Pitch.pptx) · [Editable version](docs/presentation/StillTrue_Editable.pptx) · [Read the PDF](docs/presentation/StillTrue_Pitch.pdf). Eight slides with speaker notes; mock output and live-validation prerequisites are labelled.
+
+## Free-only demo and deployment status
+
+A key-free, browser-only demonstration is implemented and tested. Build from `frontend` with `VITE_OFFLINE_DEMO=true npm run build`; serve its `dist` folder with a static server. It performs no model or web calls, has a permanent **OFFLINE DEMO / MOCK DATA** banner, and leaves every claim Unconfirmed. This is not a live verification service or benchmark substitute.
+
+[Free deployment and account setup](docs/FREE_DEPLOYMENT.md) explains the GitHub Pages workflow and optional Docker-hosting blueprint. **No public app URL has been confirmed deployed.** The current environment denies GitHub's deployment API; its draft network changes have not been applied. Expected Pages address after successful owner setup and deployment: `https://hannielvinu.github.io/StillTrue/` (proposed, not validated live). Tavily/model keys and hosting accounts have not been created or fabricated; use secure settings, never chat or source files.
+
+The latest requested presentation package is in [deck/](deck/): [native editable PPTX](deck/StillTrue_Pitch.pptx), [PDF](deck/StillTrue_Pitch.pdf), [speaker script](deck/SCRIPT.md), [missing assets](deck/ASSETS_NEEDED.md), and [quality report](deck/quality_report.json). It contains eight main slides plus two backups. Source screenshots, real capture/recording, team identity and benchmark remain explicit placeholders until provided or actually run. The earlier styled pitch remains available under docs/presentation.

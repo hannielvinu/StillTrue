@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { api } from "./api";
+import { offlineDemo, offlineRun } from "./offlineDemo";
 import type { Claim, Correction, Result, Run } from "../types";
 export function useVerifyStream() {
   const [claims, setClaims] = useState<Claim[]>([]),
@@ -47,6 +48,25 @@ export function useVerifyStream() {
     setCorrection(null);
     setStage("Extracting time-sensitive claims…");
     try {
+      if (offlineDemo) {
+        const result = offlineRun(input.text);
+        setClaims(result.claims.map((r) => r.claim));
+        setStage(
+          "Offline demonstration: no models or live sources are called.",
+        );
+        for (const claim of result.claims) {
+          await new Promise((resolve) => setTimeout(resolve, 120));
+          if (gen !== generation.current) return;
+          setResults((old) => [...old, claim]);
+        }
+        if (gen !== generation.current) return;
+        setRun(result);
+        setBusy(false);
+        setStage(
+          "Offline demonstration complete — every claim remains Unconfirmed.",
+        );
+        return;
+      }
       const data = await api<{ job_id: string }>("/api/v1/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

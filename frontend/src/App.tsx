@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   BrowserRouter,
+  HashRouter,
   Link,
   NavLink,
   Route,
@@ -17,6 +18,7 @@ import {
   FileCheck2,
 } from "lucide-react";
 import { api } from "./lib/api";
+import { offlineDemo } from "./lib/offlineDemo";
 import { useVerifyStream } from "./lib/useVerifyStream";
 import {
   ClaimCard,
@@ -479,7 +481,13 @@ job = httpx.post("http://localhost:8000/api/v1/verify",
           <pre>{`from openai import OpenAI
 client = OpenAI(base_url="http://localhost:8080/v1", api_key="gateway-key")
 # Then annotate the generated answer with StillTrue.`}</pre>
-          <a href="/docs">Explore the API reference ↗</a>
+          {offlineDemo ? (
+            <p>
+              API reference is available at /docs when running the full backend.
+            </p>
+          ) : (
+            <a href="/docs">Explore the API reference ↗</a>
+          )}
         </>
       ) : page === "limits" ? (
         <>
@@ -496,6 +504,13 @@ client = OpenAI(base_url="http://localhost:8080/v1", api_key="gateway-key")
             evidence means Unconfirmed.
           </p>
           <h2>Your data</h2>
+          {offlineDemo && (
+            <p>
+              This offline demonstration runs in your browser. Your input is not
+              sent to Tavily, a model provider, or a backend. The description
+              below applies to the full backend application.
+            </p>
+          )}
           <p>
             We mask detected personal details by default before sending claims
             and context to models through Bifrost and search queries to Tavily.
@@ -542,13 +557,23 @@ function Shell() {
   }, [dark]);
   return (
     <>
-      <a className="skip" href="#main">
+      <a
+        className="skip"
+        href="#main"
+        onClick={(event) => {
+          if (offlineDemo) {
+            event.preventDefault();
+            document.getElementById("main")?.focus();
+            document.getElementById("main")?.scrollIntoView();
+          }
+        }}
+      >
         Skip to content
       </a>
       {meta?.mock && (
         <div className="mock-banner" role="status">
-          MOCK DATA · Synthetic fixtures for offline development. No live claims
-          verified.
+          {offlineDemo ? "OFFLINE DEMO · " : ""}MOCK DATA · Synthetic fixtures
+          for offline development. No live claims verified.
         </div>
       )}
       {metaError && (
@@ -576,7 +601,7 @@ function Shell() {
           {dark ? <Sun size={19} /> : <Moon size={19} />}
         </button>
       </header>
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Check meta={meta} />} />
           <Route path="/demo" element={<RemotePage kind="demo" />} />
@@ -600,10 +625,11 @@ function Shell() {
     </>
   );
 }
+const Router = offlineDemo ? HashRouter : BrowserRouter;
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Shell />
-    </BrowserRouter>
+    </Router>
   );
 }

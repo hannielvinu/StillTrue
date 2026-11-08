@@ -1,0 +1,12 @@
+# Optional full backend hosting. Account creation and free-plan availability must be verified by the owner.
+services:
+  - type: web
+    name: stilltrue
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/v1/meta
+    envVars:
+      - key: MOCK_MODE
+        value: "true"
+      - key: CACHE_PATH
+        value: /tmp/stilltrue/evidence.db

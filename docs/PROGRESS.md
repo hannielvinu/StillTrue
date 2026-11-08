@@ -13,3 +13,11 @@
 - [ ] 40 opened-source candidate rows (official pages blocked by environment policy)
 
 Checkboxes describe implementation, not live validation. See VERIFICATION.md for executed checks.
+
+## Free-only continuation
+- [x] Key-free browser-only demo with no definitive verdicts or external calls
+- [x] GitHub Pages workflow and optional free-plan hosting blueprint prepared
+- [x] New requested native 8+2 slide deck, script, citations and placeholder checks
+- [ ] Public hosting confirmed (API access and Pages setup blocked)
+- [ ] Actual free-tier account keys and source activation
+- [ ] Real captures, recording and benchmark remain outstanding

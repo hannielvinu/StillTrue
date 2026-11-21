@@ -1,0 +1,1048 @@
+{
+  "date": "2026-11-21T12:27:11.703540+00:00",
+  "sample_label": "n=28",
+  "models": [
+    "groq/openai/gpt-oss-120b",
+    "nvidia/nvidia/nemotron-3.5-lightning-30b-a3b"
+  ],
+  "commit": "ebe4c13f73dd6d279732bbf818e3e3a7634cd8e8",
+  "stilltrue": {
+    "n": 28,
+    "accuracy": 0.7857142857142857,
+    "false_current_rate": 0.07692307692307693,
+    "missed_change_rate": 0.15384615384615385,
+    "unconfirmed_rate": 0.17857142857142858,
+    "latency_p50_ms": 18593.0,
+    "latency_p95_ms": 31965
+  },
+  "baseline": {
+    "n": 28,
+    "accuracy": 0.6071428571428571,
+    "false_current_rate": 0.07692307692307693,
+    "missed_change_rate": 0.15384615384615385,
+    "unconfirmed_rate": 0.10714285714285714,
+    "latency_p50_ms": 647.0,
+    "latency_p95_ms": 2701
+  },
+  "mean_estimated_credits_per_claim": 2.5714285714285716,
+  "cache_hit_rate": 0.14285714285714285,
+  "rows": [
+    {
+      "id": "seed_schedule_al",
+      "expected": "CHANGED",
+      "verdict": "CURRENT",
+      "baseline": "CURRENT",
+      "latency_ms": 16954,
+      "baseline_latency_ms": 623,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": "https://www.incometax.gov.in/iec/foportal/help/how-to-file-itr2-form",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "If your total income exceeds \u20b950 lakh, it is mandatory to disclose the details of movable and immovable assets in Schedule AL",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/how-to-file-itr2-form",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "If your total income exceeds \u20b950 lakh, it is mandatory to disclose the details of movable and immovable assets in Schedule AL",
+          "source_url": "https://www.incometax.gov.in/iec/foportal/help/how-to-file-itr2-form",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "\u20b91 crore",
+      "ground_truth_source_url": "https://www.incometaxindia.gov.in/w/8schedule_al"
+    },
+    {
+      "id": "py38",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 15624,
+      "baseline_latency_ms": 678,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "no longer receives security updates (EOL on 2024-10-07)",
+      "source_url": "https://www.python.org/downloads/release/python-3818",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "no longer receives security updates (EOL on 2024-10-07)",
+          "effective_from": "2024-10-07",
+          "change_summary": "Python 3.8 reached end-of-life and stopped receiving security updates",
+          "evidence_quote": "Warning: Python 3.8.18 reached end-of-life on 2024-10-07. It is no longer supported and does not receive security updates.",
+          "source_url": "https://www.python.org/downloads/release/python-3818",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "end of life since 2024-10-07",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Warning: Python 3.8.18 reached end-of-life on 2024-10-07. It is no longer supported and does not receive security updates",
+          "source_url": "https://www.python.org/downloads/release/python-3818",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "End of life 2024-10-07",
+      "ground_truth_source_url": "https://devguide.python.org/versions/"
+    },
+    {
+      "id": "py39",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 19047,
+      "baseline_latency_ms": 718,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "end-of-life on 2025-10-31",
+      "source_url": "https://www.python.org/downloads/release/python-3923",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "end-of-life on 2025-10-31",
+          "effective_from": "2025-10-31",
+          "change_summary": "Python 3.9 support ended after October 2025",
+          "evidence_quote": "Warning: Python 3.9.23 reached end-of-life on 2025-10-31.",
+          "source_url": "https://www.python.org/downloads/release/python-3923",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "end-of-life since 2025-10-31",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Warning: Python 3.9.21 reached end-of-life on 2025-10-31. It is no longer supported and does not receive security updates.",
+          "source_url": "https://www.python.org/downloads/release/python-3923",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "End of life 2025-10-31",
+      "ground_truth_source_url": "https://devguide.python.org/versions/"
+    },
+    {
+      "id": "py310",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 18925,
+      "baseline_latency_ms": 700,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "unsupported (end-of-life as of 2026-10-01)",
+      "source_url": "https://www.python.org/downloads/release/python-3100",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "unsupported (end-of-life as of 2026-10-01)",
+          "effective_from": "2026-10-01",
+          "change_summary": "Python 3.10 reached end-of-life and is no longer supported",
+          "evidence_quote": "Warning: Python 3.10.0 reached end-of-life on 2026-10-01. It is no longer supported and does not receive security updates.",
+          "source_url": "https://www.python.org/downloads/release/python-3100",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "end of life since 2026-10-01",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Python 3.10.0 reached end-of-life on 2026-10-01.",
+          "source_url": "https://www.python.org/downloads/release/python-3100",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "End of life 2026-10-01",
+      "ground_truth_source_url": "https://devguide.python.org/versions/"
+    },
+    {
+      "id": "py312",
+      "expected": "CURRENT",
+      "verdict": "UNCONFIRMED",
+      "baseline": "CURRENT",
+      "latency_ms": 18261,
+      "baseline_latency_ms": 546,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": null,
+      "reason": "quote_not_supported",
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "true",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "According to the release calendar specified in PEP 693, Python 3.12 is now in the \"security fixes only\" stage of its life cycle: the 3.12 branch only accepts security fixes, and releases of those are made irregularly in source-only form until October 2028.",
+          "source_url": "https://www.python.org/downloads/release/python-31211",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "the 3.12 branch only accepts security fixes, and releases of those are made irregularly in source-only form until October 2028.",
+          "source_url": "https://www.python.org/downloads/release/python-31216",
+          "confidence": 0.9
+        }
+      ],
+      "ground_truth_value": "Security support until 2028-10",
+      "ground_truth_source_url": "https://devguide.python.org/versions/"
+    },
+    {
+      "id": "node18",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 24891,
+      "baseline_latency_ms": 712,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "EOL",
+      "source_url": "https://nodejs.org/en/about/previous-releases",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "EOL",
+          "effective_from": "2025-04-01",
+          "change_summary": "Node.js 18 reached end-of-life on April 2025",
+          "evidence_quote": "| v18 | Hydrogen | Apr 18, 2022 | Mar 27, 2025 | EOL | Details |",
+          "source_url": "https://nodejs.org/en/about/previous-releases",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "end of life since 2025-03-27",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| v18 | Hydrogen | Apr 18, 2022 | Mar 27, 2025 | EOL | Details |",
+          "source_url": "https://nodejs.org/en/about/previous-releases",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "End of life 2025-04-30",
+      "ground_truth_source_url": "https://github.com/nodejs/Release/blob/main/schedule.json"
+    },
+    {
+      "id": "node20",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 6718,
+      "baseline_latency_ms": 520,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "EOL",
+      "source_url": "https://nodejs.org/en/about/previous-releases",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "EOL",
+          "effective_from": "2026-03-24",
+          "change_summary": "Node.js v20 status listed as EOL in official releases table",
+          "evidence_quote": "| v20 | Iron | Apr 17, 2023 | Mar 24, 2026 | EOL | Details |",
+          "source_url": "https://nodejs.org/en/about/previous-releases",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "EOL since 2026-03-24",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| v20 | Iron | Apr 17, 2023 | Mar 24, 2026 | EOL | Details |",
+          "source_url": "https://nodejs.org/en/about/previous-releases",
+          "confidence": 0.95
+        }
+      ],
+      "ground_truth_value": "End of life 2026-04-30",
+      "ground_truth_source_url": "https://github.com/nodejs/Release/blob/main/schedule.json"
+    },
+    {
+      "id": "node22",
+      "expected": "CURRENT",
+      "verdict": "UNCONFIRMED",
+      "baseline": "CURRENT",
+      "latency_ms": 17282,
+      "baseline_latency_ms": 706,
+      "credits": 0,
+      "cache_hits": 1,
+      "claim_count": 1,
+      "failed": true,
+      "current_value": null,
+      "source_url": null,
+      "reason": null,
+      "judgments": null,
+      "ground_truth_value": "Supported until 2027-04-30",
+      "ground_truth_source_url": "https://github.com/nodejs/Release/blob/main/schedule.json"
+    },
+    {
+      "id": "php81",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 16188,
+      "baseline_latency_ms": 529,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "PHP 8.1 does not receive security support",
+      "source_url": "https://www.php.net",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "PHP 8.1 does not receive security support",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "PHP 8.1 and older no longer receive updates from the PHP project.",
+          "source_url": "https://www.php.net",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "no longer receives security updates from the PHP project",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "PHP 8.1 and older no longer receive updates from the PHP project",
+          "source_url": "https://www.php.net",
+          "confidence": 0.95
+        }
+      ],
+      "ground_truth_value": "Security support ended 31 Dec 2025",
+      "ground_truth_source_url": "https://www.php.net/supported-versions.php"
+    },
+    {
+      "id": "php84",
+      "expected": "CURRENT",
+      "verdict": "UNCONFIRMED",
+      "baseline": "CURRENT",
+      "latency_ms": 20379,
+      "baseline_latency_ms": 774,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": null,
+      "reason": "quote_not_supported",
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "supported (security support until 31 Dec 2026)",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 8.4 | 21 Nov 2024 | _1 year, 11 months ago_ | 31 Dec 2026 | _in 1 month_ | 31 Dec 2028 | _in 2 years, 1 month_ | Migration guide for PHP 8.4 |",
+          "source_url": "https://www.php.net/supported-versions.php",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "31 Dec 2026 | _in 1 month_",
+          "source_url": "https://www.php.net/supported-versions.php",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Security support until 31 Dec 2028",
+      "ground_truth_source_url": "https://www.php.net/supported-versions.php"
+    },
+    {
+      "id": "pg13",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 25282,
+      "baseline_latency_ms": 587,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "false",
+      "source_url": "https://www.postgresql.org/support/versioning",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "false",
+          "effective_from": "2025-11-13",
+          "change_summary": "PostgreSQL 13 reached end-of-life on November 13, 2025 and is no longer supported",
+          "evidence_quote": "| 13 | 13.23 | No | September 24, 2020 | November 13, 2025 |",
+          "source_url": "https://www.postgresql.org/support/versioning",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "end-of-life since 2025-11-13",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 13 | 13.23 | No | September 24, 2020 | November 13, 2025 |",
+          "source_url": "https://www.postgresql.org/support/versioning",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Final release November 13, 2025",
+      "ground_truth_source_url": "https://www.postgresql.org/support/versioning/"
+    },
+    {
+      "id": "pg14",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 8277,
+      "baseline_latency_ms": 812,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "unsupported since 2026-11-12",
+      "source_url": "https://www.postgresql.org/support/versioning",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "unsupported since 2026-11-12",
+          "effective_from": "2026-11-12",
+          "change_summary": "EOL reached",
+          "evidence_quote": "| 14 | 14.25 | Yes | September 30, 2021 | November 12, 2026 |",
+          "source_url": "https://www.postgresql.org/support/versioning",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "end of life since 2026-11-12",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "PostgreSQL 14 will stop receiving fixes on November 12, 2026.",
+          "source_url": "https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Final release November 12, 2026",
+      "ground_truth_source_url": "https://www.postgresql.org/support/versioning/"
+    },
+    {
+      "id": "pg17",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CURRENT",
+      "latency_ms": 19006,
+      "baseline_latency_ms": 684,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": "https://www.postgresql.org/support/versioning",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 17 | 17.12 | Yes | September 26, 2024 | November 8, 2029 |",
+          "source_url": "https://www.postgresql.org/support/versioning",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 17 | 17.12 | Yes | September 26, 2024 | November 8, 2029 |",
+          "source_url": "https://www.postgresql.org/support/versioning",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Supported until November 8, 2029",
+      "ground_truth_source_url": "https://www.postgresql.org/support/versioning/"
+    },
+    {
+      "id": "go124",
+      "expected": "CHANGED",
+      "verdict": "UNCONFIRMED",
+      "baseline": "UNCONFIRMED",
+      "latency_ms": 28382,
+      "baseline_latency_ms": 708,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": null,
+      "reason": "models_disagree",
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "true",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "go1.24.13 (released 2026-02-04) includes security fixes to the `go` command and the `crypto/tls` package, as well as bug fixes to the `crypto/x509` package.",
+          "source_url": "https://golang.org/doc/devel/release.html",
+          "confidence": 1.0
+        },
+        {
+          "relation": "insufficient",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "go1.24.13 (released 2026-02-04) includes security fixes to the `go` command",
+          "source_url": "https://golang.org/doc/devel/release.html",
+          "confidence": 0.5
+        }
+      ],
+      "ground_truth_value": "Supported releases are go1.27 and go1.26 (each release supported until two newer major releases)",
+      "ground_truth_source_url": "https://go.dev/doc/devel/release"
+    },
+    {
+      "id": "go126",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CHANGED",
+      "latency_ms": 35292,
+      "baseline_latency_ms": 448,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "supported",
+      "source_url": "https://golang.org/doc/devel/release.html",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "supported",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "go1.26.10 (released 2026-10-19) includes security fixes to the `crypto/x509` package.",
+          "source_url": "https://golang.org/doc/devel/release.html",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": "supported",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "go1.26.10 (released 2026-10-19) includes security fixes to the `crypto/x509` package",
+          "source_url": "https://golang.org/doc/devel/release.html",
+          "confidence": 0.9
+        }
+      ],
+      "ground_truth_value": "go1.26 is one of the two supported releases",
+      "ground_truth_source_url": "https://go.dev/doc/devel/release"
+    },
+    {
+      "id": "ubuntu2004",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 28513,
+      "baseline_latency_ms": 491,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "false",
+      "source_url": "https://ubuntu.com/blog/ubuntu-20-04-lts-end-of-life-standard-support-is-coming-to-an-end-heres-how-to-prepare",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "false",
+          "effective_from": "2025-05-31",
+          "change_summary": "Standard support for Ubuntu 20.04 LTS ended on 31 May 2025",
+          "evidence_quote": "For Ubuntu 20.04 LTS, this support lasted until 31 May 2025.",
+          "source_url": "https://ubuntu.com/blog/ubuntu-20-04-lts-end-of-life-standard-support-is-coming-to-an-end-heres-how-to-prepare",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "ended 2025-05-31",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "For Ubuntu 20.04 LTS, this support lasted until 31 May 2025.",
+          "source_url": "https://ubuntu.com/blog/ubuntu-20-04-lts-end-of-life-standard-support-is-coming-to-an-end-heres-how-to-prepare",
+          "confidence": 0.9
+        }
+      ],
+      "ground_truth_value": "Standard support ended May 2025 (Ubuntu Pro to May 2030)",
+      "ground_truth_source_url": "https://ubuntu.com/about/release-cycle"
+    },
+    {
+      "id": "ubuntu2404",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "UNCONFIRMED",
+      "latency_ms": 27525,
+      "baseline_latency_ms": 582,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "standard support until 31 May 2029",
+      "source_url": "https://documentation.ubuntu.com/release-notes/24.04",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "standard support until 31 May 2029",
+          "effective_from": "April 2024",
+          "change_summary": null,
+          "evidence_quote": "Ubuntu 24.04 LTS will be security maintained for 5 years until 31 May 2029.",
+          "source_url": "https://documentation.ubuntu.com/release-notes/24.04",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Ubuntu 24.04 LTS will be security maintained for 5 years until 31 May 2029. Users can choose to extend this to 10 years with Ubuntu",
+          "source_url": "https://documentation.ubuntu.com/release-notes/24.04",
+          "confidence": 0.9
+        }
+      ],
+      "ground_truth_value": "Standard support until May 2029",
+      "ground_truth_source_url": "https://ubuntu.com/about/release-cycle"
+    },
+    {
+      "id": "k8s130",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 11324,
+      "baseline_latency_ms": 535,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "End of Life since 2025-07-15",
+      "source_url": "https://kubernetes.io/releases/1.30",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "End of Life since 2025-07-15",
+          "effective_from": "2025-07-15",
+          "change_summary": "Kubernetes 1.30 reached end of life and no longer receives security updates or bug fixes",
+          "evidence_quote": "This release has reached End of Life on 2025-07-15. Kubernetes 1.30 is no longer receiving security updates or bug fixes.",
+          "source_url": "https://kubernetes.io/releases/1.30",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "end of life since 2025-07-15",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "This release has reached End of Life on 2025-07-15. Kubernetes 1.30 is no longer receiving security updates or bug fixes.",
+          "source_url": "https://kubernetes.io/releases/1.30",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Current releases are v1.37, v1.36, v1.35",
+      "ground_truth_source_url": "https://kubernetes.io/releases/"
+    },
+    {
+      "id": "uk_isa",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CURRENT",
+      "latency_ms": 21112,
+      "baseline_latency_ms": 640,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "\u00a320,000",
+      "source_url": "https://www.gov.uk/individual-savings-accounts",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "\u00a320,000",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "In the 2026 to 2027 tax year, the maximum you can save in ISAs is *\u00a320,000*",
+          "source_url": "https://www.gov.uk/individual-savings-accounts",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Every tax year you can save up to \u00a320,000 in one account or split the allowance across multiple accounts.",
+          "source_url": "https://www.gov.uk/individual-savings-accounts/how-isas-work",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "\u00a320,000 in the 2026 to 2027 tax year",
+      "ground_truth_source_url": "https://www.gov.uk/individual-savings-accounts"
+    },
+    {
+      "id": "uk_pa",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CURRENT",
+      "latency_ms": 15709,
+      "baseline_latency_ms": 559,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "\u00a312,570",
+      "source_url": "https://www.gov.uk/government/publications/budget-2026-overview-of-tax-legislation-and-rates-ootlar/annex-a-rates-and-allowances",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "\u00a312,570",
+          "effective_from": "2026-04-06",
+          "change_summary": null,
+          "evidence_quote": "| Personal allowance | \u00a312,570 | \u00a312,570 |",
+          "source_url": "https://www.gov.uk/government/publications/budget-2026-overview-of-tax-legislation-and-rates-ootlar/annex-a-rates-and-allowances",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": "\u00a312,570",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| Personal Allowance | \u00a312,570 | \u00a312,570 | \u00a312,570 | \u00a312,570 |",
+          "source_url": "https://www.gov.uk/government/publications/rates-and-allowances-income-tax/income-tax-rates-and-allowances-current-and-past",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "\u00a312,570",
+      "ground_truth_source_url": "https://www.gov.uk/income-tax-rates"
+    },
+    {
+      "id": "uk_visit",
+      "expected": "CHANGED",
+      "verdict": "CHANGED",
+      "baseline": "CHANGED",
+      "latency_ms": 16798,
+      "baseline_latency_ms": 399,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "\u00a3135",
+      "source_url": "https://www.gov.uk/standard-visitor",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "contradicts",
+          "current_value": "\u00a3135",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "A Standard Visitor visa costs \u00a3135 for up to 6 months.",
+          "source_url": "https://www.gov.uk/standard-visitor",
+          "confidence": 1.0
+        },
+        {
+          "relation": "contradicts",
+          "current_value": "\u00a3135",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "A Standard Visitor visa costs \u00a3135 for up to 6 months.",
+          "source_url": "https://www.gov.uk/standard-visitor",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "\u00a3135 for up to 6 months",
+      "ground_truth_source_url": "https://www.gov.uk/standard-visitor"
+    },
+    {
+      "id": "node26",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "UNCONFIRMED",
+      "latency_ms": 8867,
+      "baseline_latency_ms": 665,
+      "credits": 0,
+      "cache_hits": 1,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "LTS",
+      "source_url": "https://nodejs.org/en/about/previous-releases",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "LTS",
+          "effective_from": "May 05, 2026",
+          "change_summary": "Node.js v26 is listed with status LTS",
+          "evidence_quote": "| v26 | Lithium | May 05, 2026 | Nov 10, 2026 | LTS | Details |",
+          "source_url": "https://nodejs.org/en/about/previous-releases",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| v26 | Lithium | May 05, 2026 | Nov 10, 2026 | LTS | Details |",
+          "source_url": "https://nodejs.org/en/about/previous-releases",
+          "confidence": 0.9
+        }
+      ],
+      "ground_truth_value": "Active LTS since 2026-10-28, supported until 2029-04-30",
+      "ground_truth_source_url": "https://github.com/nodejs/Release/blob/main/schedule.json"
+    },
+    {
+      "id": "py314",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CHANGED",
+      "latency_ms": 22508,
+      "baseline_latency_ms": 654,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": "https://devguide.python.org/versions",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 3.14 | PEP 745 | bugfix | 2025-10-07 | 2030-10 | Hugo van Kemenade |",
+          "source_url": "https://devguide.python.org/versions",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Python 3.14.10, released on 25 October 2026",
+          "source_url": "https://www.python.org/doc/versions",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "3.14 in bugfix status, end of life 2030-10",
+      "ground_truth_source_url": "https://devguide.python.org/versions/"
+    },
+    {
+      "id": "pg18",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CHANGED",
+      "latency_ms": 11734,
+      "baseline_latency_ms": 475,
+      "credits": 0,
+      "cache_hits": 1,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": "https://www.postgresql.org/support/versioning",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 18 | 18.7 | Yes | September 25, 2025 | November 14, 2030 |",
+          "source_url": "https://www.postgresql.org/support/versioning",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": "Yes",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 18 | 18.7 | Yes | September 25, 2025 | November 14, 2030 |",
+          "source_url": "https://www.postgresql.org/support/versioning",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Supported until November 14, 2030",
+      "ground_truth_source_url": "https://www.postgresql.org/support/versioning/"
+    },
+    {
+      "id": "k8s136",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CHANGED",
+      "latency_ms": 31965,
+      "baseline_latency_ms": 815,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "Actively Supported",
+      "source_url": "https://v1-36.docs.kubernetes.io/releases/1.36",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "Actively Supported",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Release Status\n:   Actively Supported",
+          "source_url": "https://v1-36.docs.kubernetes.io/releases/1.36",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Actively Supported",
+          "source_url": "https://kubernetes.io/releases/1.36",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Current releases are v1.37, v1.36, v1.35",
+      "ground_truth_source_url": "https://kubernetes.io/releases/"
+    },
+    {
+      "id": "php85",
+      "expected": "CURRENT",
+      "verdict": "UNCONFIRMED",
+      "baseline": "CHANGED",
+      "latency_ms": 21251,
+      "baseline_latency_ms": 494,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": null,
+      "reason": "quote_not_supported",
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 8.5 | 20 Nov 2025 | _11 months ago_ | 31 Dec 2027 | _in 1 year, 1 month_ | 31 Dec 2029 | _in 3 years, 1 month_ | Migration guide for PHP 8.5 |",
+          "source_url": "https://www.php.net/supported-versions.php",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": "supported",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "8.5 | 20 Nov 2025 | _11 months ago_ | 31 Dec 2027",
+          "source_url": "https://www.php.net/supported-versions.php",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Active support until 31 Dec 2027, security until 31 Dec 2029",
+      "ground_truth_source_url": "https://www.php.net/supported-versions.php"
+    },
+    {
+      "id": "go127",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CHANGED",
+      "latency_ms": 15631,
+      "baseline_latency_ms": 3370,
+      "credits": 0,
+      "cache_hits": 1,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": "supported",
+      "source_url": "https://golang.org/doc/devel/release.html",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": "supported",
+          "effective_from": "2026-10-19",
+          "change_summary": null,
+          "evidence_quote": "go1.27.3 (released 2026-10-19) includes security fixes to the `crypto/x509` package.",
+          "source_url": "https://golang.org/doc/devel/release.html",
+          "confidence": 0.97
+        },
+        {
+          "relation": "supports",
+          "current_value": "1.27",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "go1.27.3 (released 2026-10-19) includes security fixes to the `crypto/x509` package.",
+          "source_url": "https://golang.org/doc/devel/release.html",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "go1.27 is the newest supported release",
+      "ground_truth_source_url": "https://go.dev/doc/devel/release"
+    },
+    {
+      "id": "ubuntu2604",
+      "expected": "CURRENT",
+      "verdict": "CURRENT",
+      "baseline": "CHANGED",
+      "latency_ms": 16261,
+      "baseline_latency_ms": 2701,
+      "credits": 3,
+      "cache_hits": 0,
+      "claim_count": 1,
+      "failed": false,
+      "current_value": null,
+      "source_url": "https://documentation.ubuntu.com/release-notes/26.04",
+      "reason": null,
+      "judgments": [
+        {
+          "relation": "supports",
+          "current_value": null,
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "Ubuntu 26.04 LTS will be supported until April 2031.",
+          "source_url": "https://documentation.ubuntu.com/release-notes/26.04",
+          "confidence": 1.0
+        },
+        {
+          "relation": "supports",
+          "current_value": "supported",
+          "effective_from": null,
+          "change_summary": null,
+          "evidence_quote": "| 26.04 LTS    Ubuntu  Supported architectures  amd64, armhf, arm64, s390x, riscv64, ppc64el-p9  ---  Upgrade path  26.10    Ubuntu",
+          "source_url": "https://ubuntu.com/about/release-cycle",
+          "confidence": 1.0
+        }
+      ],
+      "ground_truth_value": "Released Apr 2026, standard support until May 2031",
+      "ground_truth_source_url": "https://ubuntu.com/about/release-cycle"
+    }
+  ]
+}

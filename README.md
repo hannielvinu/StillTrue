@@ -4,19 +4,32 @@
 
 StillTrue is a freshness checker for actionable AI answers: thresholds, deadlines, fees, requirements and API versions. Paste an answer and receive **Still true**, **Changed**, or **Couldn't confirm**, with dated evidence and a transparent heuristic score. Built for the Global AI Hackathon (Geek Room), using Bifrost and Tavily; no endorsement is implied.
 
-> Build status: runnable offline demonstration and implemented live integration. Live provider calls, a real captured demo and measured benchmark results require your credentials. Official domain activation is a separate required step described below. See [executed checks](docs/VERIFICATION.md). Do not submit mock output as real evidence.
+> **Live and measured (21 Nov 2026).** Real Tavily search + extract, real Bifrost gateway (v2.4.0), two independent verifier models on two providers. On 28 claims labelled against official pages, StillTrue was right **22/28 (79%)** vs **17/28 (61%)** for the same model answering alone, and **6/7 vs 0/7 on facts newer than the model's training**. When it gives a verdict it was right **22 of 23 times**. [Full results](#benchmark).
 
-![StillTrue check page, offline mode](docs/screenshots/check-1280-light.png)
+![StillTrue live check: three outdated claims flagged with official quotes](docs/screenshots/live-check-1280.png)
+
+*Real live run in the app: an AI-style answer recommending Ubuntu 20.04, Node.js 20 and PostgreSQL 14. All three are flagged **Changed**, each with a verbatim quote from the publisher (ubuntu.com, nodejs.org, postgresql.org: "November 12, 2026").*
+
+## Why it matters
+
+AI answers age silently. A model trained last year will tell you Node.js 20 is the LTS to use, a visa costs £115, or that a version you have never heard of "does not exist". The answer reads confidently; nothing says it is out of date. StillTrue reads the answer, pulls out the claims you would act on (prices, versions, deadlines, thresholds), and checks each one **today** against the organisation that actually publishes the fact.
+
+## What makes it different
+
+1. **The publisher of the fact is the authority.** For each claim the extractor names the official source (openai.com for OpenAI prices, python.org for Python support, gov.uk for UK fees); Tavily searches that domain first. Government domains count as official everywhere; wikis, blogs and aggregators never do.
+2. **No quote, no verdict.** A verdict needs a quote of at most 25 words found word-for-word on an official page. If a model paraphrases, it gets one chance to copy the exact text; otherwise the claim stays *Couldn't confirm*.
+3. **Two independent models must agree.** Verifier A (Groq `gpt-oss-120b`) and verifier B (NVIDIA `nemotron-3.5-lightning`) judge separately through Bifrost; any conflict on the current value blocks the verdict. Fallbacks are disabled for verifiers so a fallback can never fake agreement.
+4. **Built for free tiers.** Evidence cache, per-call token ledger, Retry-After handling and low reasoning effort: the full 28-claim benchmark cost about 2.6 Tavily credits per claim.
 
 ## Start in five steps
 
 1. Clone: `git clone https://github.com/hannielvinu/StillTrue.git && cd StillTrue`.
-2. Copy configuration: `cp .env.example .env`. For an offline demonstration set `MOCK_MODE=true`. For live checking follow [credential setup](docs/KEYS.md), set model IDs and activate official source packs.
+2. Copy configuration: `cp .env.example .env` and fill `TAVILY_API_KEY`, `GROQ_API_KEY` and `NVIDIA_API_KEY` (all have free tiers; see [credential setup](docs/KEYS.md)). The model IDs in `.env.example` are the ones used for the benchmark. For a key-free UI tour set `MOCK_MODE=true`.
 3. Start: `docker compose up --build -d`. The gateway has no provider access until you supply your own keys. In mock mode the app needs no external API.
-4. Open the app at port **8000**, API docs at **/docs**, Bifrost at port **8080**. Check `/api/v1/health`: it reports gateway reachability and credential presence, not successful model inference. No live verification is claimed until a real check completes.
+4. Open the app at port **8000**, API docs at **/docs**, Bifrost at port **8080**. Check `/api/v1/health` (gateway reachability and credentials), then paste an answer in the UI or run `make bench` to reproduce the benchmark.
 5. For development install Python 3.11+, uv, Node 22+ and run `make install`, then `MOCK_MODE=true make dev`. UI: **5173**, backend: **8000**, gateway: **8080**. Use a separate terminal for Docker Bifrost if running live. `make test lint build` runs the local CI checks.
 
-No Git worktree is needed; each cloud task already has an isolated checkout. Dependencies are pinned in `backend/uv.lock` and `frontend/package-lock.json`. Do not commit `.env`, databases or generated builds.
+Dependencies are pinned in `backend/uv.lock` and `frontend/package-lock.json`. Do not commit `.env`, databases or generated builds.
 
 ## Features
 
@@ -123,15 +136,28 @@ blocked_domains: []
 
 Use lowercase hostnames with no scheme/path; subdomains match on a dot boundary. Blocked domains are excluded from evidence. Tier 1 is required for a definitive verdict. Tier 2 is context only. General has no Tier 1 domains by design.
 
-**Initial packs are conservative and have no activated domains** because official pages were blocked by cloud policy during the build. Run `backend/.venv/bin/python scripts/activate_packs.py` after allowing the domains, review its output, and rerun checks. It activates only hostnames whose official page returned success; inspect each source's relevance before relying on it. Until then live checks correctly remain Unconfirmed. See [decisions](docs/DECISIONS.md).
+Every pack also accepts **the publisher of each fact** (named per claim by the extractor and validated: no wikis, blogs, forums or aggregators) and **government domains** (.gov, .gov.in, .gov.uk, europa.eu, …) as official. Curated lists ship for developer APIs (vendor docs), India tax (incometax.gov.in, cbic-gst.gov.in, RBI, SEBI…), UK personal finance (gov.uk, FCA) and travel/visa (travel.state.gov, uscis.gov, gov.uk, canada.ca…). Set `allow_publisher_domain: false` or `allow_government: false` in a pack to restrict it to its own list.
 
 ## Benchmark
 
 <!-- benchmark:start -->
-**Not yet run.** No measured accuracy, latency or cost claims are made.
-<!-- benchmark:end -->
+**Run on 21 Nov 2026** · 28 claims · live Tavily + Bifrost · raw report: [`benchmark/results/20261121T122711.json`](benchmark/results/20261121T122711.json)
 
-`benchmark/claims.jsonl` contains the one user-authorized human-verified seed. Additional candidates require opened official pages and human labels; no fabricated 40-row dataset is included. See [benchmark procedure](docs/BENCHMARK.md). Run `make bench` with real credentials; mock mode is refused. `python scripts/update_readme_results.py` inserts the latest actual report into this section.
+| | StillTrue | Same model alone (no search) |
+|---|---|---|
+| Correct verdicts | **22 / 28 (79%)** | 17 / 28 (61%) |
+| Facts newer than the model's training (7) | **6 / 7** | 0 / 7 (called all of them outdated) |
+| Older facts (21) | 16 / 21 | 17 / 21 |
+| Right when it commits to a verdict | **22 / 23 (96%)** | 17 / 25 (68%) |
+| Said "Couldn't confirm" | 5 | 3 |
+| Median time per claim | 18.6 s | 0.6 s |
+
+Models through Bifrost: extractor `groq/openai/gpt-oss-20b`; verifiers `groq/openai/gpt-oss-120b` + `nvidia/nvidia/nemotron-3.5-lightning-30b-a3b`. Baseline: `gpt-oss-120b` asked "is this still true today?" with no retrieval. Mean 2.57 estimated Tavily credits per claim.
+
+**Dataset.** 28 claims (14 still true, 14 changed): software support status (Python, Node.js, PHP, PostgreSQL, Go, Ubuntu, Kubernetes), UK allowances and visa fees, and one India tax threshold. Every label was checked by hand against the official page on the day of the run (`benchmark/claims.jsonl` records the page and value). It is small and skewed toward software lifecycles; treat it as a sanity check, not a leaderboard.
+
+**Where it failed, honestly.** The one wrong verdict: an official incometax.gov.in help page still says Schedule AL applies above ₹50 lakh, while the label (from incometaxindia.gov.in) says ₹1 crore. StillTrue trusted the stale government page and showed its quote. Official sources can disagree; detecting that conflict is the next feature. The five *Couldn't confirm* results: three still-true claims where the models' quotes did not match the official page word for word (the quote gate held), one changed claim (Go 1.24) where the two verifiers disagreed, and one provider error (Node.js 22), counted as a miss rather than retried.
+<!-- benchmark:end -->
 
 Capture a genuine answer using `cd backend && .venv/bin/python ../scripts/capture_example.py 'Your question' --model provider/model`. Then `make record-demo CAPTURE=../examples/captured_TIMESTAMP.json`. Rebuild the frontend to include the recording. Until then `/demo` explicitly says no recording exists.
 
@@ -145,20 +171,12 @@ This is not professional advice. PII detection is best-effort. Do not paste secr
 
 ## Stack and license
 
-Python 3.11+, FastAPI, Pydantic v2, httpx, aiosqlite, PyYAML, slowapi; React 18, strict TypeScript, Vite, Tailwind 3.4, Lucide, self-hosted Fraunces/Inter/JetBrains Mono fonts. Docker Compose and GitHub Actions. MIT, copyright 2026 Hanniel Vinu.
+Bifrost (Maxim AI) gateway, Tavily search/extract, Groq and NVIDIA model APIs, Python 3.11+, FastAPI, Pydantic v2, httpx, aiosqlite, PyYAML, slowapi; React 18, strict TypeScript, Vite, Tailwind 3.4, Lucide, self-hosted Fraunces/Inter/JetBrains Mono fonts. Docker Compose and GitHub Actions. MIT, copyright 2026 Hanniel Vinu.
 
-An AI coding assistant helped implement and test this project. Human review is still required before submission; this README does not claim that review has happened.
+**AI use (disclosed per the hackathon rules):** StillTrue uses LLMs through Bifrost for claim extraction, verification and the corrected answer, and Tavily for live search. An AI coding assistant helped build and test the code.
 
-## Pitch presentation
+## Pitch deck and demo
 
-[Download the submission PowerPoint](docs/presentation/StillTrue_Pitch.pptx) · [Editable version](docs/presentation/StillTrue_Editable.pptx) · [Read the PDF](docs/presentation/StillTrue_Pitch.pdf). Eight slides with speaker notes; mock output and live-validation prerequisites are labelled.
-
-## Free-only demo and deployment status
-
-A key-free, browser-only demonstration is implemented and tested. Build from `frontend` with `VITE_OFFLINE_DEMO=true npm run build`; serve its `dist` folder with a static server. It performs no model or web calls, has a permanent **OFFLINE DEMO / MOCK DATA** banner, and leaves every claim Unconfirmed. This is not a live verification service or benchmark substitute.
-
-[Free deployment and account setup](docs/FREE_DEPLOYMENT.md) explains the GitHub Pages workflow and optional Docker-hosting blueprint. **No public app URL has been confirmed deployed.** The current environment denies GitHub's deployment API; its draft network changes have not been applied. Expected Pages address after successful owner setup and deployment: `https://hannielvinu.github.io/StillTrue/` (proposed, not validated live). Tavily/model keys and hosting accounts have not been created or fabricated; use secure settings, never chat or source files.
-
-The latest requested presentation package is in [deck/](deck/): [native editable PPTX](deck/StillTrue_Pitch.pptx), [PDF](deck/StillTrue_Pitch.pdf), [speaker script](deck/SCRIPT.md), [missing assets](deck/ASSETS_NEEDED.md), and [quality report](deck/quality_report.json). It contains eight main slides plus two backups. Source screenshots, real capture/recording, team identity and benchmark remain explicit placeholders until provided or actually run. The earlier styled pitch remains available under docs/presentation.
-
-Deployment attempt: [GitHub Actions run 42502966161](https://github.com/hannielvinu/StillTrue/actions/runs/42502966161) reached Pages configuration and failed with **Pages site not found**. Enable repository Settings → Pages → Source: GitHub Actions, then rerun **Deploy free offline demo**. The configure-pages action documents that initial automatic enablement needs a token other than GITHUB_TOKEN; none was copied into the workflow. The expected site address remains unverified and no live deployment is claimed.
+- Pitch deck: [PDF](deck/StillTrue_Pitch.pdf) · [PPTX](deck/StillTrue_Pitch.pptx), with the measured benchmark and the live screenshot above.
+- Live run screenshots: [`docs/screenshots/live-input-1280.png`](docs/screenshots/live-input-1280.png), [`docs/screenshots/live-result-1280.png`](docs/screenshots/live-result-1280.png).
+- A key-free offline build (`VITE_OFFLINE_DEMO=true npm run build`) exists for browsing the UI without credentials; it is labelled **MOCK DATA** and never shows a verdict.

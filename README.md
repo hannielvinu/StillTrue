@@ -163,7 +163,7 @@ Capture a genuine answer using `cd backend && .venv/bin/python ../scripts/captur
 
 ## Validation and submission
 
-See [verification](docs/VERIFICATION.md), [architecture](docs/ARCHITECTURE.md), [scoring](docs/SCORING.md), [limitations](docs/LIMITATIONS.md), [demo script](docs/DEMO_SCRIPT.md), [pitch](docs/PITCH.md) and [submission copy](docs/SUBMISSION.md). Use `make test`, `make lint`, `make build`, `make up`, `make bench`, `make record-demo`. CI uses the same local checks and advisory dependency audits; a written workflow is not a claimed remote CI pass.
+See [verification](docs/VERIFICATION.md), [architecture](docs/ARCHITECTURE.md), [scoring](docs/SCORING.md) and [limitations](docs/LIMITATIONS.md). Use `make test`, `make lint`, `make build`, `make up`, `make bench`, `make record-demo`. CI uses the same local checks and advisory dependency audits; a written workflow is not a claimed remote CI pass.
 
 ## Privacy and limitations
 
@@ -175,9 +175,6 @@ Bifrost (Maxim AI) gateway, Tavily search/extract, Groq and NVIDIA model APIs, P
 
 **AI use (disclosed per the hackathon rules):** StillTrue uses LLMs through Bifrost for claim extraction, verification and the corrected answer, and Tavily for live search. An AI coding assistant helped build and test the code.
 
-## Pitch deck and demo
+## Screenshots
 
-- Demo video (60 s, narrated, recorded real run): [`docs/demo/StillTrue_demo.mp4`](docs/demo/StillTrue_demo.mp4)
-- Pitch deck: [PDF](deck/StillTrue_Pitch.pdf) · [PPTX](deck/StillTrue_Pitch.pptx), with the measured benchmark and the live screenshot above.
-- Live run screenshots: [`docs/screenshots/live-input-1280.png`](docs/screenshots/live-input-1280.png), [`docs/screenshots/live-result-1280.png`](docs/screenshots/live-result-1280.png).
-- A key-free offline build (`VITE_OFFLINE_DEMO=true npm run build`) exists for browsing the UI without credentials; it is labelled **MOCK DATA** and never shows a verdict.
+Real live run: [`docs/screenshots/live-input-1280.png`](docs/screenshots/live-input-1280.png) · [`docs/screenshots/live-result-1280.png`](docs/screenshots/live-result-1280.png). A key-free offline build (`VITE_OFFLINE_DEMO=true npm run build`) lets you browse the UI without credentials; it is labelled **MOCK DATA** and never shows a verdict.

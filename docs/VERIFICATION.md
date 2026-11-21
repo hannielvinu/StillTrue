@@ -34,7 +34,6 @@ Ground-truth labels were checked against the official pages on the run date (sav
 | Screenshots | Real browser captures under docs/screenshots; synthetic data banner visible |
 | Text/background token contrast calculation | 13 primary/status pairs passed ≥4.5:1; lowest 4.65:1 |
 | `MOCK_MODE=true make bench` | Expected refusal; no report created |
-| `python scripts/count_chars.py /tmp/stilltrue-pitch.txt --limit 140` | One-line pitch 114 characters |
 | Dependency audits | Initial vulnerabilities fixed by upgrades; final npm audit: 0 vulnerabilities; final pip-audit: no known vulnerabilities |
 
 Browser smoke uses the system Python Playwright installation and /usr/bin/chromium. Install Playwright and Chromium separately on machines without them. It requires the app to be running in explicit mock mode. It is not a Lighthouse or full assistive-technology audit. 200% zoom and layout-shift metrics have not been formally measured.

@@ -39,17 +39,17 @@ class Tavily:
                     await asyncio.sleep(0.5 * 2**attempt)
         raise RuntimeError("Retrieval request failed")
 
-    async def search(self, query: str, pack: dict, official: bool):
+    async def search(self, query: str, pack: dict, official: list[str] | None, basic: bool = False):
         body = {
             "query": query,
-            "search_depth": "advanced",
+            "search_depth": "basic" if basic else "advanced",
             "max_results": 5,
             "topic": "general",
             "exclude_domains": pack["blocked_domains"],
         }
         if official:
-            body["include_domains"] = pack["tier1_domains"]
-        return await self.call("search", body, 2)
+            body["include_domains"] = official
+        return await self.call("search", body, 1 if basic else 2)
 
     async def extract(self, urls, query):
         return await self.call(

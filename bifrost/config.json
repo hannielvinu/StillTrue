@@ -28,6 +28,36 @@
           "weight": 1.0
         }
       ]
+    },
+    "groq": {
+      "keys": [
+        {
+          "name": "groq-primary",
+          "value": "env.GROQ_API_KEY",
+          "models": [
+            "*"
+          ],
+          "weight": 1.0
+        }
+      ]
+    },
+    "nvidia": {
+      "keys": [
+        {
+          "name": "nvidia-primary",
+          "value": "env.NVIDIA_API_KEY",
+          "models": [
+            "*"
+          ],
+          "weight": 1.0
+        }
+      ],
+      "network_config": {
+        "base_url": "https://integrate.api.nvidia.com"
+      },
+      "custom_provider_config": {
+        "base_provider_type": "openai"
+      }
     }
   },
   "config_store": {

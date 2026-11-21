@@ -2,6 +2,17 @@ name: india_tax
 description: Indian tax rules
 jurisdiction: India
 example_queries_hint: []
-tier1_domains: []
+tier1_domains:
+- incometaxindia.gov.in
+- incometax.gov.in
+- cbic-gst.gov.in
+- gst.gov.in
+- indiabudget.gov.in
+- pib.gov.in
+- rbi.org.in
+- sebi.gov.in
+- epfindia.gov.in
+- npscra.nsdl.co.in
+- nsiindia.gov.in
 tier2_domains: []
 blocked_domains: []

@@ -1,7 +1,45 @@
 name: developer_apis
-description: API versions and deprecations
+description: API prices, versions and deprecations
 jurisdiction: Global
 example_queries_hint: []
-tier1_domains: []
-tier2_domains: []
+tier1_domains:
+- openai.com
+- anthropic.com
+- claude.com
+- ai.google.dev
+- cloud.google.com
+- developers.google.com
+- docs.aws.amazon.com
+- aws.amazon.com
+- learn.microsoft.com
+- azure.microsoft.com
+- python.org
+- nodejs.org
+- go.dev
+- rust-lang.org
+- kubernetes.io
+- docs.github.com
+- github.blog
+- react.dev
+- docs.stripe.com
+- stripe.com
+- groq.com
+- tavily.com
+- getbifrost.ai
+- docs.docker.com
+- postgresql.org
+- developer.apple.com
+- developer.android.com
+- oracle.com
+- mozilla.org
+- php.net
+- ruby-lang.org
+- djangoproject.com
+- nvidia.com
+- mistral.ai
+- x.ai
+- cohere.com
+- huggingface.co
+tier2_domains:
+- endoflife.date
 blocked_domains: []

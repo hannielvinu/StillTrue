@@ -13,7 +13,7 @@ from .scorer import summarize
 from .trust import packs, ROOT
 
 
-async def run(data, settings, emit):
+async def run(data, settings, emit, rewrite=True):
     started = time.monotonic()
     text, findings = scan(data.text, data.redact)
     question, _ = scan(data.question, data.redact)
@@ -73,7 +73,7 @@ async def run(data, settings, emit):
                 else:
                     pack = packs()[data.pack]
                     # Include the trust policy in the key so edited packs invalidate evidence.
-                    key = Store.key(data.pack + json.dumps(pack, sort_keys=True), claim)
+                    key = Store.key("r2:" + data.pack + json.dumps(pack, sort_keys=True), claim)
                     ttl = {
                         "high": settings.cache_ttl_high_h,
                         "medium": settings.cache_ttl_med_h,
@@ -111,7 +111,7 @@ async def run(data, settings, emit):
     await asyncio.gather(*(one(c) for c in claims))
     results.sort(key=lambda r: text.index(r["claim"]["text"]))
     correction = None
-    if not settings.mock_mode:
+    if rewrite and not settings.mock_mode:
         try:
             correction = await rewriter.rewrite(llm, text, results, settings)
         except Exception:

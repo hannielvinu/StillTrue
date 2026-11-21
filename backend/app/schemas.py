@@ -26,6 +26,7 @@ class Claim(Strict):
     volatility: Literal["high", "medium", "low"] = "medium"
     as_of_hint: str | None = None
     pack_hint: str = "general"
+    authority_domain: str | None = Field(None, max_length=100)
 
 
 class Claims(Strict):

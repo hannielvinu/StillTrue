@@ -2,6 +2,15 @@ name: travel_visa
 description: Travel and entry requirements
 jurisdiction: International
 example_queries_hint: []
-tier1_domains: []
+tier1_domains:
+- travel.state.gov
+- uscis.gov
+- state.gov
+- gov.uk
+- canada.ca
+- immi.homeaffairs.gov.au
+- indianvisaonline.gov.in
+- mea.gov.in
+- home-affairs.ec.europa.eu
 tier2_domains: []
 blocked_domains: []

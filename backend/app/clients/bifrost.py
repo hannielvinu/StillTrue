@@ -1,5 +1,7 @@
 import asyncio
 import json
+import time
+from pathlib import Path
 import httpx
 from pydantic import BaseModel
 from ..config import Settings
@@ -15,6 +17,9 @@ class Bifrost:
         if not model:
             raise ValueError("Configure a provider/model ID in environment settings")
         payload = {"model": model, "messages": messages, "temperature": 0}
+        if "gpt-oss" in model:
+            # Reasoning tokens are billed output; low effort keeps free-tier quotas intact.
+            payload["reasoning_effort"] = "low"
         if self.s.fallback_models and (schema is None or schema.__name__ != "Judgment"):
             payload["fallbacks"] = [
                 m.strip() for m in self.s.fallback_models.split(",") if m.strip()
@@ -41,12 +46,13 @@ class Bifrost:
                     )
                     if r.status_code == 429 or r.status_code >= 500:
                         if attempt < 2:
-                            await asyncio.sleep(0.5 * 2**attempt)
+                            await asyncio.sleep(self._retry_after(r, attempt))
                             continue
                     r.raise_for_status()
                     data = r.json()
                     for k in self.usage:
                         self.usage[k] += data.get("usage", {}).get(k, 0)
+                    self._ledger(model, data.get("usage", {}))
                     self.used_models.append(data.get("model", model))
                     content = data["choices"][0]["message"]["content"]
                     return schema.model_validate_json(content) if schema else content
@@ -55,3 +61,29 @@ class Bifrost:
                         raise
                     await asyncio.sleep(0.5 * 2**attempt)
         raise RuntimeError("Gateway request failed")
+
+    @staticmethod
+    def _retry_after(response: httpx.Response, attempt: int) -> float:
+        """Honour the provider's Retry-After (token-per-minute windows reset in seconds)."""
+        try:
+            return min(20.0, max(0.5, float(response.headers.get("retry-after", ""))))
+        except ValueError:
+            return min(20.0, 2.0 * 2**attempt) if response.status_code == 429 else 0.5 * 2**attempt
+
+    def _ledger(self, model: str, usage: dict) -> None:
+        """Append one line per model call so spending is auditable after every run."""
+        try:
+            path = Path(self.s.cache_path).with_name("usage.jsonl")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            row = {
+                "t": round(time.time()),
+                "model": model,
+                **{
+                    k: usage.get(k, 0)
+                    for k in ("prompt_tokens", "completion_tokens", "total_tokens")
+                },
+            }
+            with path.open("a") as f:
+                f.write(json.dumps(row) + "\n")
+        except OSError:
+            pass

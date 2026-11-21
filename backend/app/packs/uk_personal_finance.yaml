@@ -2,6 +2,10 @@ name: uk_personal_finance
 description: UK savings and personal finance
 jurisdiction: United Kingdom
 example_queries_hint: []
-tier1_domains: []
-tier2_domains: []
+tier1_domains:
+- gov.uk
+- fca.org.uk
+- bankofengland.co.uk
+tier2_domains:
+- moneyhelper.org.uk
 blocked_domains: []

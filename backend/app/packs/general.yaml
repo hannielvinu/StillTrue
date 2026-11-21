@@ -1,7 +1,11 @@
 name: general
-description: No pre-approved official domains; results remain unconfirmed
+description: 'Any topic: the fact''s official publisher and government sites count
+  as official'
 jurisdiction: Global
 example_queries_hint: []
 tier1_domains: []
-tier2_domains: []
+tier2_domains:
+- endoflife.date
+- reuters.com
+- apnews.com
 blocked_domains: []

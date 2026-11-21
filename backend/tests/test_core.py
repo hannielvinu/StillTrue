@@ -46,8 +46,14 @@ def test_consensus_and_quote():
         == "models_disagree"
     )
     assert decide([judgment(evidence_quote="invented")], E, "single")["verdict"] == "UNCONFIRMED"
+    # A wrong citation is replaced by the official page that really contains the quote.
+    rescued = decide([judgment(source_url="https://evil.test")], E, "single")
+    assert rescued["source_url"] == E[0]["url"] and rescued["source_url"] != "https://evil.test"
     assert (
-        decide([judgment(source_url="https://evil.test")], E, "single")["verdict"] == "UNCONFIRMED"
+        decide(
+            [judgment(source_url="https://evil.test", evidence_quote="not on page")], E, "single"
+        )["verdict"]
+        == "UNCONFIRMED"
     )
     assert decide([judgment(confidence=0.7)], E, "single")["verdict"] == "UNCONFIRMED"
     assert decide([judgment(), judgment()], E, "cross-model")["verdict"] == "CHANGED"
@@ -235,3 +241,42 @@ def test_config_and_prompts():
     assert Settings(verifier_model_a="first/a", verifier_model_b="second/b").mode == "cross-model"
     for name in ["extractor", "verifier", "rewriter"]:
         assert (ROOT / "prompts" / f"{name}.md").read_text().strip()
+
+
+def test_verifiers_agree_on_number_despite_wording():
+    from app.services.verifier import same_value
+
+    assert same_value("2.50 USD per million input tokens", "2.50")
+    assert same_value("₹1,00,000", "100000 rupees")
+    assert not same_value("2.50", "5")
+    assert same_value("Node.js 26", "node js 26")
+    assert same_value("end-of-life", "No longer supported")
+
+
+def test_publisher_domain_is_official_but_aggregators_are_not():
+    from app.services.trust import authority, tier
+
+    pack = {"tier1_domains": [], "tier2_domains": [], "blocked_domains": []}
+    assert tier("https://developers.openai.com/api/pricing", pack, authority("openai.com")) == 1
+    assert (
+        authority("en.wikipedia.org") is None
+        and authority("https://www.python.org/x") == "python.org"
+    )
+    assert tier("https://www.uscis.gov/h-1b", pack) == 1  # government suffix
+    assert tier("https://pricepertoken.com/x", pack, authority("pricepertoken.com")) == 3
+
+
+def test_quote_gate_tolerates_typography_but_not_new_words():
+    from app.services.verifier import quoted_in
+
+    page = "Python 3.8 — end‑of‑life   2024-10-07. It’s unsupported."
+    assert quoted_in("It's  unsupported", page)
+    assert not quoted_in("It's still supported", page)
+
+
+def test_ellipsis_quote_needs_every_fragment_on_page():
+    from app.services.verifier import quoted_in
+
+    page = "Python 3.8 is now in the security fixes only stage. Support lasts until October 2024."
+    assert quoted_in("Python 3.8 is now in the security ... until October 2024", page)
+    assert not quoted_in("Python 3.8 is now in the security ... until October 2029", page)

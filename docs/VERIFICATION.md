@@ -1,4 +1,22 @@
-# Verification — 8 November 2026 (Asia/Kolkata)
+# Verification
+
+## Live verification — 21 November 2026
+
+| Check | Result |
+|---|---|
+| Bifrost v2.4.0 gateway with Groq + NVIDIA (custom OpenAI-type provider) | Chat completions succeed through the gateway for `groq/openai/gpt-oss-20b`, `groq/openai/gpt-oss-120b`, `nvidia/nvidia/nemotron-3.5-lightning-30b-a3b` |
+| Tavily search + extract with the real key | Publisher-first `include_domains` search and extract return official pages (python.org, nodejs.org, postgresql.org, ubuntu.com, gov.uk, incometax.gov.in…) |
+| `/api/v1/health` | `bifrost_reachable: true, tavily_key_present: true, mock: false, live_ready: true` |
+| Benchmark (`make bench`, 28 labelled claims) | StillTrue 22/28 vs model-alone 17/28; new facts 6/7 vs 0/7; report `benchmark/results/20261121T122711.json` |
+| Live UI run (headless Chromium) | Ubuntu 20.04 / Node.js 20 / PostgreSQL 14 answer → 3 × Changed with official quotes; screenshots in `docs/screenshots/live-*.png` |
+| `make test` (backend) | 21 passed |
+| `ruff check` | All checks passed |
+| Spend | 147 estimated Tavily credits (of 1,000 free); per-call token ledger in `.data/usage.jsonl` |
+
+Ground-truth labels were checked against the official pages on the run date (saved page text was used for labelling; see `benchmark/claims.jsonl` for page and value per claim). The Schedule AL seed is the user's own human label.
+
+## Earlier build checks — 8 November 2026 (before live credentials)
+
 
 ## Executed in this cloud machine
 

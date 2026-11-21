@@ -4,7 +4,7 @@
 3. Solution: claim-level Current / Changed / Unconfirmed.
 4. Architecture: PII → Bifrost extraction → Tavily retrieval → Bifrost independent checks → quote gate.
 5. Demo: live with credentials, genuine recording fallback; clearly label mock demonstrations.
-6. Benchmark: real reports only; not yet run at build time.
+6. Benchmark (21 Nov 2026): 22/28 vs 17/28 for the model alone; 6/7 vs 0/7 on facts newer than its training.
 7. Path: developer annotation API; potential usage-based service, no revenue claims.
 8. Limits and next 30 days: source coverage, human labels, adversarial testing, shared jobs and auth.
 

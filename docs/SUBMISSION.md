@@ -1,30 +1,21 @@
 # Submission copy kit
 
+Theme: **Build a Stale-Answer Detector for AI Applications** (uses both Tavily and Bifrost).
+
 ## One-line pitch
-Check whether your AI answer is still true, claim by claim, against official sources—with evidence, not guesswork.
+Paste any AI answer: StillTrue checks every price, version and deadline against the organisation that publishes it, live, with a word-for-word official quote.
 
-## Problem (two sentences)
-People may act on AI answers whose deadlines, thresholds or requirements have changed. Search results can also be outdated, leaving users unsure which source to trust.
+## Problem
+AI answers go out of date silently, and people act on them. In our test a strong model called all 7 recent software releases "outdated" because they came after its training.
 
-## Solution (two sentences)
-StillTrue extracts actionable claims and compares them with retrieved official evidence. It returns claim-level freshness verdicts, copied quotes and explicit uncertainty through a web interface and developer API.
+## Solution
+StillTrue extracts actionable claims, searches each fact's official publisher with Tavily, has two independent models (via Bifrost) judge the evidence, and only issues a verdict when a quote is found word for word on an official page.
+
+## Measured result (21 Nov 2026, 28 labelled claims)
+22/28 correct vs 17/28 for the same model alone; 6/7 vs 0/7 on facts newer than the model's training; right 22 of 23 times when it commits to a verdict.
 
 ## AI usage
-An AI coding assistant helped implement and test the software. Human review, real-key validation and benchmark labelling remain required before final submission.
+LLMs (Groq gpt-oss-20b, gpt-oss-120b; NVIDIA Nemotron 3.5 Lightning) through Bifrost extract claims, verify evidence and rewrite the answer. An AI coding assistant helped build and test the code.
 
 ## Technologies
-Bifrost, Tavily, Python, FastAPI, Pydantic, httpx, SQLite, React, TypeScript, Vite, Tailwind CSS, Docker, GitHub Actions.
-
-## Truthful checklist
-- [x] Runnable implementation with automated local tests
-- [x] Offline mode conspicuously labelled
-- [ ] Real-key end-to-end demonstration
-- [ ] Human-reviewed benchmark labels and measured results
-- [ ] Real captured answer and recording
-- [ ] Submission form and slide deck completed by entrant
-
-Form idea-description character limit: parameter supplied by the actual form, not guessed. Use `python scripts/count_chars.py FILE --limit N`. Keep reports and pitch claims consistent with docs/VERIFICATION.md.
-
-## Track and live-readiness clarification
-
-Strongest confirmed problem fit: Tavily **Stale-Answer Detector**. Using Bifrost as infrastructure does not establish fulfillment of a separate Bifrost challenge. Choose an integrated Bifrost-primary submission only after the exact Bifrost problem statement is mapped and satisfied. Source activation, credentialed calls, real demo capture and measured benchmark are pending. The free static site is an offline UI demonstration, not a live claim-verification service.
+Bifrost, Tavily, Groq, NVIDIA API catalog, Python, FastAPI, Pydantic, httpx, SQLite, React, TypeScript, Vite, Tailwind CSS, Docker, GitHub Actions.

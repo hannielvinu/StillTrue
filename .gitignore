@@ -12,3 +12,4 @@ dist/
 .data/
 coverage/
 playwright-report/
+benchmark/results/partial.json

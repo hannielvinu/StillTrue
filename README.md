@@ -177,6 +177,7 @@ Bifrost (Maxim AI) gateway, Tavily search/extract, Groq and NVIDIA model APIs, P
 
 ## Pitch deck and demo
 
+- Demo video (78 s, recorded real run): [`docs/demo/StillTrue_demo.mp4`](docs/demo/StillTrue_demo.mp4)
 - Pitch deck: [PDF](deck/StillTrue_Pitch.pdf) · [PPTX](deck/StillTrue_Pitch.pptx), with the measured benchmark and the live screenshot above.
 - Live run screenshots: [`docs/screenshots/live-input-1280.png`](docs/screenshots/live-input-1280.png), [`docs/screenshots/live-result-1280.png`](docs/screenshots/live-result-1280.png).
 - A key-free offline build (`VITE_OFFLINE_DEMO=true npm run build`) exists for browsing the UI without credentials; it is labelled **MOCK DATA** and never shows a verdict.
